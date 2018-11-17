@@ -1,0 +1,16 @@
+var fs = require('fs')
+var arguments = process.argv[2]
+try {
+  fs.mkdirSync('./'+arguments)
+} catch(e) {
+  console.log(arguments + '文件已存在')
+  process.exit(1)
+}
+process.chdir('./'+arguments)
+fs.mkdirSync('css')
+fs.mkdirSync('js')
+fs.writeFileSync("./index.html", "<!DOCTYPE><title>Hello</title><h1>Hi</h1>")
+fs.writeFileSync("css/style.css", "h1{color: red;}")
+fs.writeFileSync("./js/main.js", ' var string = "Hello World" alert(string)')
+console.log(arguments + '文件创建成功')
+process.exit(0)
